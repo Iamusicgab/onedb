@@ -8,7 +8,7 @@ const TuitionCard = (props: any) => {
 						<span className="font-bold">PHP {props.tuition}</span>
 					</div>
 
-					<div className="grid grid-flow-col justify-between">
+					<div className="grid grid-flow-col justify-between items-end">
 						<div className="grid grid-flow-col items-center justify-start gap-2">
 							<svg
 								xmlns="http://www.w3.org/2000/svg"

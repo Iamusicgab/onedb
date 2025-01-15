@@ -1,4 +1,4 @@
-const Announce = (props: any) => {
+const Announce = () => {
 	return (
 		<div className="bg-white h-52 grid items-between justify-between p-3 rounded-lg shadow-md border-2 border-accent">
 			<div className="grid gap-1">

@@ -1,5 +1,4 @@
 import EnrollmentCard from "../components/enrollmentcard";
-import LargeButton from "../components/largebutton";
 import TuitionCard from "../components/tuitioncard";
 
 const Enrollment = () => {
@@ -20,7 +19,6 @@ const Enrollment = () => {
 				/>
 
 				<TuitionCard tuition="23,555.12" due="January 25, 2025" />
-				<LargeButton title="View Grades" link="/" />
 			</div>
 		</div>
 	);

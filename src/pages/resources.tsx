@@ -8,6 +8,7 @@ const Resources = () => {
 					<span className="text-2xl font-bold">Resources</span>
 				</div>
 				<div className="grid gap-2">
+					<LargeButton title="View Grades" link="/" />
 					<LargeButton title="Previous Announcements" link="/" />
 					<LargeButton title="Companion of Youth" link="/" />
 					<LargeButton title="Student Handbook" link="/" />

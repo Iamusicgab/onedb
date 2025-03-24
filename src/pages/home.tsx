@@ -1,14 +1,27 @@
-
-
 import Announce from "../components/announce";
 
 import LargeButton from "../components/largebutton";
+import { db } from "../components/firebase";
+import {
+	collection,
+	getDocs,
+	query,
+	orderBy,
+	doc,
+	getDoc,
+	limit,
+} from "firebase/firestore";
+
+const q = query(
+	collection(db, "announcements"),
+	orderBy("date", "desc"),
+	limit(3)
+);
+const announcementsQuery = await getDocs(q);
 
 const Home = () => {
 	return (
 		<div>
-
-
 			<div className="grid gap-4">
 				<div className="">
 					<span className="text-2xl font-bold">Good day, Gabriel!</span>
@@ -18,9 +31,24 @@ const Home = () => {
 						<span className="text-accent text-lg">Announcements</span>
 					</div>
 					<div className="grid gap-2">
-						<Announce />
-						<Announce />
-						<Announce />
+						{announcementsQuery.docs.map((doc) => {
+							const data = doc.data();
+							return (
+								<Announce
+									title={data.title}
+									description={data.description}
+									date={
+										data.date.toDate().toLocaleString("default", {
+											month: "long",
+											day: "numeric",
+											year: "numeric",
+										}) +
+										" at " +
+										data.date.toDate().toLocaleTimeString()
+									}
+								/>
+							);
+						})}
 						<a href="/resources" className="text-accent">
 							View More {">"}
 						</a>

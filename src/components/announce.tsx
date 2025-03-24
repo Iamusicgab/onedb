@@ -1,11 +1,10 @@
-const Announce = () => {
+const Announce = (props: any) => {
 	return (
 		<div className="bg-white h-52 grid items-between justify-between p-3 rounded-lg shadow-md border-2 border-accent">
 			<div className="grid gap-1">
-				<span className="text-lg font-bold">No Classes!</span>
+				<span className="text-lg font-bold">{props.title}</span>
 				<span className="text-sm h-24 max-h-24 line-clamp-5">
-					This is where the description of the text goes. This is where the
-					description of the text goes. This is where the
+					{props.description}
 				</span>
 				<div className="grid grid-flow-col items-center justify-start gap-2">
 					<svg
@@ -28,7 +27,7 @@ const Announce = () => {
 						/>
 						<path d="M1.875 6.25h11.25" strokeWidth={1} />
 					</svg>
-					<span className="text-sm font-light">January 25, 2025 at 7:02PM</span>
+					<span className="text-sm font-light">{props.date}</span>
 				</div>
 			</div>
 		</div>

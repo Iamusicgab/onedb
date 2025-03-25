@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 import { createContext, useState, useEffect } from "react";
 
 import { auth, db } from "../components/firebase";

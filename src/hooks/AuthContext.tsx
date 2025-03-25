@@ -17,7 +17,7 @@ import {
 import {
 	onAuthStateChanged,
 	GoogleAuthProvider,
-	signInWithPopup,
+	signInWithRedirect,
 } from "firebase/auth";
 
 const AuthContext = createContext<any>(null);
@@ -52,7 +52,7 @@ export const UserContext = ({ children }: any) => {
 
 const signInWithGoogle = async () => {
 	try {
-		return await signInWithPopup(auth, provider);
+		return await signInWithRedirect(auth, provider);
 	} catch (err) {
 		console.error(err);
 	}

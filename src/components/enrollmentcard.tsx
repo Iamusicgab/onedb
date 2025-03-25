@@ -7,8 +7,10 @@ const EnrollmentCard = (props: any) => {
 					<span className="font-bold">{props.status}</span>
 				</div>
 				<div className="grid gap-1">
-					<span className="font-light text-sm">Strand</span>
-					<span className="font-bold">{props.strand}</span>
+					<span className="font-light text-sm">Full Name</span>
+					<span className="font-bold">
+						{props.firstName} {props.middleName} {props.lastName}
+					</span>
 				</div>
 				<div className="grid gap-1">
 					<span className="font-light text-sm">Grade Level</span>

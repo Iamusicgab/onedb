@@ -1,3 +1,4 @@
+import Header from "../components/Header";
 import Subject from "../components/subject";
 import Tasks from "../components/tasks";
 
@@ -5,9 +6,7 @@ const Courses = () => {
 	return (
 		<div>
 			<div className="grid gap-4">
-				<div>
-					<span className="text-2xl font-bold">Courses</span>
-				</div>
+				<Header title="Courses" />
 				<div>
 					<div>
 						<span className="text-accent text-lg">Tasks</span>

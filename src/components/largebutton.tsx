@@ -1,7 +1,13 @@
+import { useNavigate } from "react-router-dom";
+
 const LargeButton = (props: any) => {
+	const nav = useNavigate();
 	return (
-		<a href="/grades">
-			<button className="bg-primary w-full h-24 rounded-lg shadow-md border-2 border-accent">
+		<a href={props.redirectLink}>
+			<button
+				className="bg-accent text-white w-full h-24 rounded-lg shadow-md border-2 border-accent"
+				onClick={() => nav(props.link)}
+			>
 				<span className="text-lg font-bold">{props.title}</span>
 			</button>
 		</a>

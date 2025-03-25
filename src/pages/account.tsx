@@ -1,22 +1,24 @@
-import EnrollmentCard from "../components/enrollmentcard";
+import AccountCard from "../components/accountcard";
+
+import Header from "../components/Header";
 import LargeButton from "../components/largebutton";
+import { useContext } from "react";
+import { AuthContext, logout } from "../hooks/AuthContext";
 
 const Account = () => {
+	const user = useContext(AuthContext);
 	return (
 		<div>
 			<div className="grid gap-4">
-				<div>
-					<span className="text-2xl font-bold">Account</span>
-				</div>
-				<EnrollmentCard
-					status="Currently Enrolled"
-					strand="STEM"
-					grade="12"
-					section="Blessed Alberto Marvelli"
-					adviser="Mrs. Monica B. Cruz"
-					payment="Quarterly"
+				<Header title="Account" />
+				<AccountCard
+					name={user.displayName}
+					uid={user.uid}
+					email={user.email}
 				/>
-				<LargeButton title="Logout" link="/" />
+				<button onClick={logout} title="Signout">
+					<LargeButton title="Logout" link="/" />
+				</button>
 			</div>
 		</div>
 	);

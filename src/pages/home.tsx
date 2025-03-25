@@ -1,31 +1,18 @@
 import Announce from "../components/announce";
+import Header from "../components/Header";
 
 import LargeButton from "../components/largebutton";
-import { db } from "../components/firebase";
-import {
-	collection,
-	getDocs,
-	query,
-	orderBy,
-	doc,
-	getDoc,
-	limit,
-} from "firebase/firestore";
+import { getAnnouncements3 } from "../hooks/AuthContext";
+import { useNavigate } from "react-router-dom";
 
-const q = query(
-	collection(db, "announcements"),
-	orderBy("date", "desc"),
-	limit(3)
-);
-const announcementsQuery = await getDocs(q);
+const announcementsQuery = await getAnnouncements3();
 
 const Home = () => {
+	const nav = useNavigate();
 	return (
 		<div>
 			<div className="grid gap-4">
-				<div className="">
-					<span className="text-2xl font-bold">Good day, Gabriel!</span>
-				</div>
+				<Header title="Dashboard" />
 				<div>
 					<div>
 						<span className="text-accent text-lg">Announcements</span>
@@ -49,9 +36,14 @@ const Home = () => {
 								/>
 							);
 						})}
-						<a href="/resources" className="text-accent">
+						<button
+							className="text-accent"
+							onClick={() => {
+								nav("/announcements");
+							}}
+						>
 							View More {">"}
-						</a>
+						</button>
 					</div>
 				</div>
 				<div>
@@ -59,10 +51,9 @@ const Home = () => {
 						<span className="text-accent text-lg">Quick Access</span>
 					</div>
 					<div className="grid grid-cols-2 gap-2">
-						<LargeButton title="Grades" link="/" />
-						<LargeButton title="Schedule" link="/" />
-						<LargeButton title="Tuition" link="/" />
-						<LargeButton title="Pending Tasks" link="/" />
+						<LargeButton title="Grades" link="/grades" />
+						<LargeButton title="Tuition" link="/enrollment" />
+						<LargeButton title="Pending Tasks" link="/courses" />
 					</div>
 				</div>
 			</div>

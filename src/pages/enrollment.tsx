@@ -1,21 +1,39 @@
 import EnrollmentCard from "../components/enrollmentcard";
+import Header from "../components/Header";
 import TuitionCard from "../components/tuitioncard";
+import { useContext, useEffect } from "react";
+import { AuthContext } from "../hooks/AuthContext";
+import { getStudentData } from "../hooks/AuthContext";
+import { useState } from "react";
 
 const Enrollment = () => {
-	return (
+	const [student, setStudent] = useState<any>();
+	const [loading, setLoading] = useState(true);
+	const user = useContext(AuthContext);
+	useEffect(() => {
+		getStudentDatas();
+	}, []);
+	const getStudentDatas = async () => {
+		const student = await getStudentData(user.email);
+		setLoading(false);
+		console.log(student);
+		setStudent(student);
+	};
+	return loading ? (
+		<>Loading</>
+	) : (
 		<div>
 			<div className="grid gap-4">
-				<div className="">
-					<span className="text-2xl font-bold">Enrollment</span>
-				</div>
+				<Header title="Enrollment" />
 
 				<EnrollmentCard
 					status="Currently Enrolled"
-					strand="STEM"
-					grade="12"
-					section="Blessed Alberto Marvelli"
-					adviser="Mrs. Monica B. Cruz"
-					payment="Quarterly"
+					firstName={student.firstName}
+					middleName={student.middleName}
+					lastName={student.lastName}
+					grade={student.gradeLevel}
+					section={student.section}
+					adviser={student.adviser}
 				/>
 
 				<TuitionCard tuition="23,555.12" due="January 25, 2025" />

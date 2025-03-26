@@ -28,9 +28,7 @@ const Enrollment = () => {
 
 				<EnrollmentCard
 					status="Currently Enrolled"
-					firstName={student.firstName}
-					middleName={student.middleName}
-					lastName={student.lastName}
+					firstName={user.displayName}
 					grade={student.gradeLevel}
 					section={student.section}
 					adviser={student.adviser}
